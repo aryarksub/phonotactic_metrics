@@ -7,7 +7,7 @@ rm(list=ls())
 
 setwd("C:/hplaptop/4thYearUCI/PhonotacticsResearch/white_hayes")
 
-white_hayes_data <- read_csv("white_hayes_cleaned_metric_output.csv")
+white_hayes_data <- read_csv("white_hayes/white_hayes_cleaned_metric_output.csv")
 white_hayes_data[4:17] = scale(white_hayes_data[4:17])
 
 uni_bi_model = lmer(rating ~ uni_prob * bi_prob + (1|subject), data=white_hayes_data)

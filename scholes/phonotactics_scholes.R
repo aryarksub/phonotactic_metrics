@@ -9,7 +9,7 @@ setwd("C:/hplaptop/4thYearUCI/PhonotacticsResearch/scholes")
 
 # new file uses unigram smoothing, scale columns 3 to 18
 # if using original file, don't use "new_" prefix and scale columns 3 to 16
-scholes_data <- read_csv("new_scholes_cleaned_metric_output.csv")
+scholes_data <- read_csv("scholes/new_scholes_cleaned_metric_output.csv")
 scholes_data[3:18] = scale(scholes_data[3:18])
 
 uni_bi_model = glm(rating ~ uni_prob * bi_prob, data=scholes_data, family="binomial")

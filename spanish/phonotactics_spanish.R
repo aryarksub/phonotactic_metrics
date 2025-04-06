@@ -9,7 +9,7 @@ setwd("C:/hplaptop/4thYearUCI/PhonotacticsResearch/spanish")
 
 # new file uses unigram smoothing, scale columns 5 to 20
 # if using original file, don't use "new_" prefix and scale columns 5 to 18
-spanish_data <- read_csv("new_spanish_cleaned_metric_output.csv")
+spanish_data <- read_csv("spanish/new_spanish_cleaned_metric_output.csv")
 spanish_data[5:20] = scale(spanish_data[5:20])
 
 uni_bi_model = lmer(response ~ uni_prob * bi_prob + (1|word) + (1|ID), data=spanish_data)

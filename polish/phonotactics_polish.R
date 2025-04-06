@@ -7,7 +7,7 @@ setwd("C:/hplaptop/4thYearUCI/PhonotacticsResearch/polish")
 
 # new file uses unigram smoothing, scale columns 27 to 42
 # if using original file, don't use "new_" prefix and scale columns 27 to 40
-polish_data <- read_csv("new_cleaned_response_data.csv")
+polish_data <- read_csv("polish/new_cleaned_response_data.csv")
 polish_data[27:42] = scale(polish_data[27:42])
 
 uni_bi_model = lmer(response ~ uni_prob * bi_prob + (1|word) + (1|subj), data=polish_data)

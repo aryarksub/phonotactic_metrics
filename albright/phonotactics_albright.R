@@ -3,9 +3,7 @@ library(tidyverse)
 library(lme4)
 library(lmerTest)
 
-setwd("C:/hplaptop/4thYearUCI/PhonotacticsResearch/albright")
-
-albright_data <- read_csv("albright_cleaned_metric_output.csv")
+albright_data <- read_csv("albright/albright_cleaned_metric_output.csv")
 albright_data[3:16] = scale(albright_data[3:16])
 
 uni_bi_model = glm(rating ~ uni_prob * bi_prob, data=albright_data)
