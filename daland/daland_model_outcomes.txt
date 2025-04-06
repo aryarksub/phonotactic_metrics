@@ -26,3 +26,15 @@ pos_uni_bi_smoothed_model       2.737388 -0.03431031 0.6260560      -0.03082952 
 pos_uni_bi_model                2.733051 -0.02656453 0.6111693      -0.02467120 260.1755
 uni_bi_freq_model               2.630097 -0.04771925 0.4193662       0.20942586 284.3024
 uni_bi_model                    2.630957 -0.05115240 0.4152210       0.20457212 284.5383
+
+Results after introducing unigram smoothing:
+
+                               intercept    uni_coef   bi_coef interaction_coef      AIC
+uni_bi_smoothed_model           2.626059 -0.08282503 0.6784628       0.29492866 242.2695
+uni_bi_freq_smooth_model        2.619213 -0.08327770 0.6810401       0.31074711 244.6208
+pos_uni_bi_freq_smoothed_model  2.751346 -0.06492244 0.6688389      -0.04974550 258.4595
+pos_uni_bi_freq_model           2.749972 -0.06262447 0.6640255      -0.04778775 258.7186
+pos_uni_bi_smoothed_model       2.737388 -0.03431031 0.6260560      -0.03082952 259.4503
+pos_uni_bi_model                2.733051 -0.02656453 0.6111693      -0.02467120 260.1755
+uni_bi_freq_model               2.629985 -0.05005616 0.4216678       0.21011044 284.2598
+uni_bi_model                   10.939886  0.34734817 0.3277509       0.01387474 284.5383

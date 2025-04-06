@@ -19,9 +19,13 @@ df.replace({"T W I K AH N" : "T W IH K AH N", "C AH N IH F L" : "K AH N IH F L"}
 df["ARPA"].to_csv(f"{dir}white_hayes_cleaned_fixed_test_data.csv", header=False, index=False)
 
 # Clean fixed metric output csv
-df_metric = pd.read_csv(f"{dir}white_hayes_fixed_metric_output.csv")
-df_metric.replace(float('-inf'), -50, inplace=True)
-df_metric["rating"] = ratings
-if "subject" not in df_metric.columns:
-    df_metric.insert(loc=0, column="subject", value=subjects)
-df_metric.to_csv(f"{dir}white_hayes_cleaned_metric_output.csv", index=False)
+def clean_metric_output(pre=''):
+    df_metric = pd.read_csv(f"{dir}{pre}white_hayes_fixed_metric_output.csv")
+    df_metric.replace(float('-inf'), -20, inplace=True)
+    df_metric["rating"] = ratings
+    if "subject" not in df_metric.columns:
+        df_metric.insert(loc=0, column="subject", value=subjects)
+    df_metric.to_csv(f"{dir}{pre}white_hayes_cleaned_metric_output.csv", index=False)
+
+clean_metric_output()
+clean_metric_output('new_')

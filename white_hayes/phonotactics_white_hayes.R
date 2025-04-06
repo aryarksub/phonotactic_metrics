@@ -7,8 +7,10 @@ rm(list=ls())
 
 setwd("C:/hplaptop/4thYearUCI/PhonotacticsResearch/white_hayes")
 
-white_hayes_data <- read_csv("white_hayes/white_hayes_cleaned_metric_output.csv")
-white_hayes_data[4:17] = scale(white_hayes_data[4:17])
+# new file uses unigram smoothing, scale columns 4 to 19
+# if using original file, don't use "new_" prefix and scale columns 4 to 17
+white_hayes_data <- read_csv("new_white_hayes_cleaned_metric_output.csv")
+white_hayes_data[4:19] = scale(white_hayes_data[4:19])
 
 uni_bi_model = lmer(rating ~ uni_prob * bi_prob + (1|subject), data=white_hayes_data)
 summary(uni_bi_model)
@@ -19,13 +21,15 @@ summary(pos_uni_bi_model)
 pos_uni_bi_smooth_model = lmer(rating ~ pos_uni_score_smoothed * pos_bi_score_smoothed + (1|subject), data=white_hayes_data)
 summary(pos_uni_bi_smooth_model)
 
-uni_bi_smoothed_model = lmer(rating ~ uni_prob * bi_prob_smoothed + (1|subject), data=white_hayes_data)
+# for original metric output, use uni_prob column instead of uni_prob_smoothed
+uni_bi_smoothed_model = lmer(rating ~ uni_prob_smoothed * bi_prob_smoothed + (1|subject), data=white_hayes_data)
 summary(uni_bi_smoothed_model)
 
 uni_bi_freq_model = lmer(rating ~ uni_prob_freq_weighted * bi_prob_freq_weighted + (1|subject), data=white_hayes_data)
 summary(uni_bi_freq_model)
 
-uni_bi_freq_smooth_model = lmer(rating ~ uni_prob_freq_weighted * bi_prob_freq_weighted_smoothed + (1|subject), data=white_hayes_data)
+# for original metric output, use uni_prob_freq_weighted column instead of uni_prob_freq_weighted_smoothed
+uni_bi_freq_smooth_model = lmer(rating ~ uni_prob_freq_weighted_smoothed * bi_prob_freq_weighted_smoothed + (1|subject), data=white_hayes_data)
 summary(uni_bi_freq_smooth_model)
 
 pos_uni_bi_freq_model = lmer(rating ~ pos_uni_score_freq_weighted * pos_bi_score_freq_weighted + (1|subject), data=white_hayes_data)

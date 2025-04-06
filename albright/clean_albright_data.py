@@ -12,7 +12,11 @@ ratings = list(df["PhonWF"])
 df["verb_arpa"].to_csv(f"{dir}albright_cleaned_test_data.csv", header=False, index=False)
 
 # Clean metric output csv
-df = pd.read_csv(f"{dir}albright_original_metric_output.csv")
-df.replace(float('-inf'), -50, inplace=True)
-df["rating"] = ratings
-df.to_csv(f"{dir}albright_cleaned_metric_output.csv", index=False)
+def clean_metric_output(pre=''):
+    df = pd.read_csv(f"{dir}{pre}albright_original_metric_output.csv")
+    df.replace(float('-inf'), -50, inplace=True)
+    df["rating"] = ratings
+    df.to_csv(f"{dir}{pre}albright_cleaned_metric_output.csv", index=False)
+
+clean_metric_output()
+clean_metric_output('new_')
